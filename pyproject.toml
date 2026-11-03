@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "options-pricing-model"
+version = "0.1.0"
+description = "Educational options pricing: Black-Scholes-Merton, binomial trees, Monte Carlo, Greeks, and implied volatility."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Xcadrill" }]
+keywords = [
+    "options",
+    "black-scholes",
+    "binomial-tree",
+    "monte-carlo",
+    "implied-volatility",
+    "greeks",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.7"]
+dev = ["pytest>=7.4", "matplotlib>=3.7"]
+
+[project.scripts]
+opm = "opm.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+opm = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
